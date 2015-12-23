@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 import pycurl, json
 
 api_url = 'http://localhost:5000/api/v1.0/collector'
