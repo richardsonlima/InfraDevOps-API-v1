@@ -23,7 +23,7 @@ env = [
 
 ]
 
-# Getting default
+# Getting default with GET method
 @app.route('/api/v1.0/collector', methods=['GET'])
 def get_infra():
     return jsonify({'env': env})
