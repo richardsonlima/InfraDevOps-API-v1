@@ -9,7 +9,7 @@ data = json.dumps({"arquitetura": "x64", "hostname": "hostname-test", "sistema":
 
 c = pycurl.Curl()
 c.setopt(pycurl.URL, api_url)
-c.setopt(pycurl.HTTPHEADER, ['X-Postmark-Server-Token: API_TOKEN_HERE','Accept: application/json'])
+c.setopt(pycurl.HTTPHEADER, ['Content-Type: application/json', 'Accept: application/json'])
 c.setopt(pycurl.POST, 1)
 c.setopt(pycurl.POSTFIELDS, data)
 c.perform()
