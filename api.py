@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 __author__ = "Richardson Lima"
 __copyright__ = "Copyright 2015, Python Infra DevOps Project"
 __credits__ = ["",
