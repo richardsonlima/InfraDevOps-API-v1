@@ -1,6 +1,3 @@
- How to read from MySQL and POST data to a URL (FLask App) using Python
-How to read from MySQL and POST data to a URL (FLask App) using Python
-
 #!/usr/bin/python
 
 import MySQLdb
