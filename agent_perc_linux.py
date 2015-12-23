@@ -87,26 +87,3 @@ while True:
         	print message 
         	print "------------------"
     time.sleep(1)    	
-    #for k, v in gauges.items():
-    #    print gauges['carga']     	
-        	
-    #url = 'http://x.y.z.b:5000/project/devops/infra/todo/api/v1.0/infra'
-    #postdata = {
-    #    'sistema': 'gauges['sistema']'
-    #    'versao_sistema': 'gauges['versao_sistema']'
-    #    'hostname': 'gauges['hostname']'
-    #    'kernel': 'gauges['kernel']'
-    #    'arquitetura': 'gauges['arquitetura']'
-    #    'percentual_memoria': 'gauges['percentual_memoria']'
-    #    'percentual_cpu': 'gauges['percentual_cpu']'
-    #    'carga': 'gauges['carga']'
-    #   'percentual_volume_disco': 'gauges['percentual_volume_disco']'
-    #}
-
-    #req = urllib2.Request(url)
-    #    req.add_header('Content-Type','application/json')
-    #    data = json.dumps(postdata)
-    #    urllib2.urlopen(req,data)
-
-    #except :
-    #    print "HTTP Post error"
