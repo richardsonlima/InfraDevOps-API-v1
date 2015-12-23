@@ -1,0 +1,11 @@
+* Pre
+pip install mysql-python flask
+
+*  request
+curl -i -X GET http://localhost:5000/api/v1/collector/view
+
+# insert a new server test
+curl -i -H "Content-Type: application/json" -X POST -d '{"sistema": "LINUX", "hostname":"LNXSRV-TESTE005"}' http://localhost:5000/api/v1/collector/add
+
+# request servers again to see what you just added
+curl -i -X GET http://localhost:5000/api/v1/collector/view
