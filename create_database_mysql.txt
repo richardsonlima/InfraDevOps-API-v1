@@ -1,5 +1,10 @@
 mysql -u root -p
 CREATE DATABASE api;
+CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'apiuser'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'localhost';
+GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'%';
+FLUSH PRIVILEGES;
 use api;
 CREATE TABLE `api`.`servermonitor` (`id` INT NOT NULL AUTO_INCREMENT, `sistema` VARCHAR(45) NULL, `hostname` VARCHAR(45) NULL, 
 `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, 
