@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+__author__ = "Richardson Lima"
+__copyright__ = "Copyright 2015, Python Infra DevOps Project"
+__credits__ = ["",
+                    ""]
+__license__ = "GNU General Public License v2.0"
+__version__ = "1.0.1"
+__maintainer__ = "Richardson Lima"
+__email__ = "contato@richardsonlima.com.br"
+__status__ = "Test"
 
 import pycurl, json
 
