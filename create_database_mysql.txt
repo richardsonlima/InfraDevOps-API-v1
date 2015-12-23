@@ -1,0 +1,22 @@
+mysql -u root -p
+CREATE DATABASE api;
+use api;
+CREATE TABLE `api`.`servermonitor` (`id` INT NOT NULL AUTO_INCREMENT, `sistema` VARCHAR(45) NULL, `hostname` VARCHAR(45) NULL, 
+`percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, 
+`carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
+
+-- TESTE 
+INSERT INTO `api`.`servermonitor` (`sistema`,`hostname`) VALUES("LINUX","LNXSRV-TESTE01"),("WINDOWS SERVER","WINSRV-TESTE002"),
+("UNIX BSD","BSDSRV-TESTE003");
+
+select * FROM servermonitor;
+
+MariaDB [api]> select * FROM servermonitor;
++----+----------------+-----------------+--------------------+----------------+------------------+-------+
+| id | sistema        | hostname        | percentual_memoria | percentual_cpu | percentual_disco | carga |
++----+----------------+-----------------+--------------------+----------------+------------------+-------+
+|  1 | LINUX          | LNXSRV-TESTE01  | NULL               | NULL           | NULL             | NULL  |
+|  2 | WINDOWS SERVER | WINSRV-TESTE002 | NULL               | NULL           | NULL             | NULL  |
+|  3 | UNIX BSD       | BSDSRV-TESTE003 | NULL               | NULL           | NULL             | NULL  |
++----+----------------+-----------------+--------------------+----------------+------------------+-------+
+3 rows in set (0.00 sec)
