@@ -1,4 +1,5 @@
-#!flask/bin/python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import os
 from flask import Flask, jsonify, request, abort
@@ -23,14 +24,14 @@ env = [
 ]
 
 # Getting default
-@app.route('/project/cit/devops/infra/todo/api/v1.0/infra', methods=['GET'])
+@app.route('/api/v1.0/collector', methods=['GET'])
 def get_infra():
     return jsonify({'env': env})
 
 # Getting by id
 
 # Create a env obj
-@app.route('/project/cit/devops/infra/todo/api/v1.0/infra', methods=['POST'])
+@app.route('/api/v1.0/collector', methods=['POST'])
 def create_infra():
     if not request.json or not 'hostname' in request.json:
         abort(400)
