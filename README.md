@@ -55,7 +55,7 @@ Create Database::
 Import Database Dump::
 
     $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/db_dump.sql
-    $ $ mysql-u root -p api < db_dump.sql
+    $ mysql-u root -p api < db_dump.sql
   
 Firewall Requirements::
 
