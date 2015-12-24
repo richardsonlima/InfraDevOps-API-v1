@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>InfraDevOps-API by richardsonlima</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">InfraDevOps-API</h1>
+      <h2 class="project-tagline">A Python API written with Flask Framework to collect servers health data.</h2>
+      <a href="https://github.com/richardsonlima/InfraDevOps-API-v1" class="btn">View on GitHub</a>
+      <a href="https://github.com/richardsonlima/InfraDevOps-API-v1/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/richardsonlima/InfraDevOps-API-v1/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1></h1>
+
+<h1>
+<a id="infradevops-api-test" class="anchor" href="#infradevops-api-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>InfraDevOps-API (Test)</h1>
+
+<p>*<em>InfraDevOPS API *</em> is a Python API written with Flask Micro Framework to collect servers health data.</p>
+
+<p>Follow me on Twitter: <code>@InfraDevOps</code></p>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Instructions on this page will guide you through installation process.  </p>
+
+<p>git clone <a href="https://github.com/richardsonlima/InfraDevOps-API-v1.git">https://github.com/richardsonlima/InfraDevOps-API-v1.git</a> </p>
+
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<p>Supported python version is 2.7, below is the list of packages required to run project:</p>
+
+<pre><code>$ sudo yum -y install python-pip
+$ sudo pip install --upgrade pip
+$ sudo yum group install "Development Tools"
+$ sudo yum install python-devel mysql-devel
+$ sudo pip install MySQL-python
+$ sudo pip install flask
+</code></pre>
+
+<h3>
+<a id="provisioning-with-docker" class="anchor" href="#provisioning-with-docker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Provisioning with Docker</h3>
+
+<p>Comming soon =D</p>
+
+<h3>
+<a id="system-dependencies-centos-71" class="anchor" href="#system-dependencies-centos-71" aria-hidden="true"><span class="octicon octicon-link"></span></a>System Dependencies (Centos 7.1)</h3>
+
+<p>Below are listed commands which will preper on a cloud server::</p>
+
+<pre><code>$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ sudo rpm -Uvh epel-release-latest-7.noarch.rpm
+</code></pre>
+
+<p>Database environment::</p>
+
+<pre><code>$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+$ sudo yum update
+$ sudo yum install mysql-server
+$ sudo systemctl start mysqld
+$ sudo mysql_secure_installation
+</code></pre>
+
+<p>Create Database::</p>
+
+<pre><code>$ mysql -u root -p
+CREATE DATABASE api;
+CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'apiuser'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'localhost';
+GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'%';
+FLUSH PRIVILEGES;
+use api;
+</code></pre>
+
+<p>Import Database Dump::</p>
+
+<pre><code>$ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/db_dump.sql
+$ mysql-u root -p api &lt; db_dump.sql
+</code></pre>
+
+<p>Firewall Requirements::</p>
+
+<pre><code>$ sudo systemctl status firewalld
+$ sudo firewall-cmd --state
+$ sudo  firewall-cmd --zone=public --permanent --add-port=5000/tcp
+$ sudo firewall-cmd --reload
+</code></pre>
+
+<p>Run API::</p>
+
+<pre><code>$ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/api.py .
+$ python api.py  
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+* Debugger is active!
+</code></pre>
+
+<p>Insert a new server test::</p>
+
+<pre><code>$ curl -i -H "Content-Type: application/json" -X POST -d '{"sistema": "LINUX", "hostname":"LNXSRV-TESTE005", "percentual_memoria":"50%", "percentual_cpu":"45%", "percentual_disco":"20%", "carga":"25%"}' http://10.101.0.7:5000/api/v1/collector/add
+
+OR 
+
+$ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_pycurl.py .
+$ python ./agent_pycurl.py
+</code></pre>
+
+<p>Request servers again to see what you just added::</p>
+
+<pre><code>$ curl -i -X GET http://localhost:5000/api/v1/collector/view
+</code></pre>
+
+<p>Using php to see your database inserts ::</p>
+
+<pre><code>$ sudo yum install httpd
+$ sudo systemctl enable httpd.service
+$ sudo systemctl restart httpd.service
+$ sudo yum install php php-pear
+$ sudo yum install php-mysql
+$ sudo systemctl reload httpd
+$ sudo  firewall-cmd --zone=public --permanent --add-port=80/tcp
+$ sudo firewall-cmd --reload
+$ sudo systemctl reload httpd
+$ cd /var/www/html &amp;&amp; wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/dash.php .
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/richardsonlima/InfraDevOps-API-v1">InfraDevOps-API</a> is maintained by <a href="https://github.com/richardsonlima">richardsonlima</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
