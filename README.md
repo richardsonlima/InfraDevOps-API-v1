@@ -6,13 +6,6 @@ InfraDevOps-API
 
 Follow me on Twitter: `@InfraDevOps`
 
-Requirements
-============
-
-- ``python >= 2.7``
-
-Optional dependencies:
-
 Installation
 ============
 
@@ -23,7 +16,7 @@ git clone https://github.com/richardsonlima/InfraDevOps-API-v1.git
 
 
 System Requirements:
-````````
+---------------------------
 - ``Centos Linux 7.1`` 
 - ``Epel repo`` 
 
@@ -35,7 +28,7 @@ Install Epel repo:
    sudo rpm -Uvh epel-release-latest-7.noarch.rpm
    
 Database Requirements:
-````````
+---------------------------
 
 
     $ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
@@ -74,7 +67,7 @@ Database Requirements:
 
 
 Python Requirements:
-````````
+---------------------------
 
     $ sudo yum -y install python-pip
     $ sudo pip install --upgrade pip
@@ -84,15 +77,15 @@ Python Requirements:
     $ sudo pip install flask
 
 Firewall Requirements:
-````````
+---------------------------
 
     $ sudo systemctl status firewalldsu
     $ sudo firewall-cmd --state 
     $ sudo  firewall-cmd --zone=public --permanent --add-port=5000/tcp
     $ sudo firewall-cmd --reload
 
-Run API !
-````````
+Run API:
+---------------------------
 
     $ python test_api_4.py
     * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
