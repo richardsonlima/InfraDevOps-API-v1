@@ -78,7 +78,7 @@ Insert a new server test::
     
     OR 
     
-    $python ./agent_pycurl.py
+    $ python ./agent_pycurl.py
 
 Request servers again to see what you just added::
 
