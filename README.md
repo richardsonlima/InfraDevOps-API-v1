@@ -29,8 +29,9 @@ Install Epel repo:
 Database Requirements:
 ---------------------------
 
+
 * Install MySQL Server:
-````````
+---------------------------
 
     $ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
    
@@ -46,7 +47,7 @@ Database Requirements:
     
 
 * Create Database Environment:
-````````    
+---------------------------  
 
     mysql -u root -p
     
@@ -68,13 +69,14 @@ Database Requirements:
   `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, 
   `carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
 
+
 * Create Database Dump:
-````````    
+---------------------------
   
    $ mysqldump -u root -p api > apidb_dump_bkp_orig.sql
 
 
-Python Requirements:
+* Python Requirements:
 ---------------------------
 
 * Install ``pip`` , ``CentOS Development Tools (gcc ...), ``python-devel``, ``mysql-devel``, ``MySQL-python``, ``Flask Micro Framework`` :
@@ -87,7 +89,7 @@ Python Requirements:
     $ sudo pip install MySQL-python
     $ sudo pip install flask
 
-Firewall Requirements:
+* Firewall Requirements:
 ---------------------------
 
     $ sudo systemctl status firewalldsu
@@ -95,7 +97,7 @@ Firewall Requirements:
     $ sudo  firewall-cmd --zone=public --permanent --add-port=5000/tcp
     $ sudo firewall-cmd --reload
 
-Run API:
+* Run API:
 ---------------------------
 
     $ python test_api_4.py
