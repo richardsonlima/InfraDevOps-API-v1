@@ -6,83 +6,76 @@ InfraDevOps-API
 
 Follow me on Twitter: `@InfraDevOps`
 
-Requirements
-============
+### Installation
 
-- ``python >= 2.7``
-
-Optional dependencies:
-
-Installation
-============
-
-Install over Git
----------------------------
+Instructions on this page will guide you through installation process.  
 
 git clone https://github.com/richardsonlima/InfraDevOps-API-v1.git 
 
+### Dependencies
 
-System Requirements
-============
-- ``Centos Linux 7.1`` 
-- ``Epel repo`` 
-Install Epel repo:
-.. code-block:: console
+Supported python version is 2.7, below is the list of packages required to run project:
 
-   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-   
-   sudo rpm -Uvh epel-release-latest-7.noarch.rpm
-   
-Database Requirements
-============
+    $ sudo yum -y install python-pip
+    $ sudo pip install --upgrade pip
+    $ sudo yum group install "Development Tools"
+    $ sudo yum install python-devel mysql-devel
+    $ sudo pip install MySQL-python
+    $ sudo pip install flask
 
-.. code-block:: console
+### Provisioning with Docker
 
-   wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-   
-   sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
-   
-   sudo yum update
-   
-   sudo yum install mysql-server
-   
-   sudo systemctl start mysqld
-   
-   sudo mysql_secure_installation
+
+### System Dependencies (Centos 7.1)
+Below are listed commands which will preper on a cloud server::
+
+    $ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    $ sudo rpm -Uvh epel-release-latest-7.noarch.rpm
+    
+Database environment::
+
+    $ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+    $ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+    $ sudo yum update
+    $ sudo yum install mysql-server
+    $ sudo systemctl start mysqld
+    $ sudo mysql_secure_installation
+    
+Create Database::
+
+    $ mysql -u root -p
+    CREATE DATABASE api;
+    CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'password';
+    CREATE USER 'apiuser'@'%' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'localhost';
+    GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'%';
+    FLUSH PRIVILEGES;
+    use api;
+
+Import Database Dump::
+
+    $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/db_dump.sql
+    $ mysql-u root -p api < db_dump.sql
   
-  mysql -u root -p
-  CREATE DATABASE api;
-  CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'password';
-  CREATE USER 'apiuser'@'%' IDENTIFIED BY 'password';
-  GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'localhost';
-  GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'%';
-  FLUSH PRIVILEGES;
-  use api;
-  CREATE TABLE `api`.`servermonitor` (`id` INT NOT NULL AUTO_INCREMENT, `sistema` VARCHAR(45) NULL, `hostname` VARCHAR(45) NULL, 
-  `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, 
-  `carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
-   mysqldump -u root -p api > apidb_dump_bkp_orig.sql
+Firewall Requirements::
+
+    $ sudo systemctl status firewalld
+    $ sudo firewall-cmd --state
+    $ sudo  firewall-cmd --zone=public --permanent --add-port=5000/tcp
+    $ sudo firewall-cmd --reload
+
+Run API::
+
+    $ python api.py  
+    * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+    * Restarting with stat
+    * Debugger is active!
 
 
-Python Requirements
-============
-  sudo yum -y install python-pip
-  sudo pip install --upgrade pip
-  sudo yum group install "Development Tools"
-  sudo yum install python-devel mysql-devel
-  sudo pip install MySQL-python
-  sudo pip install flask
+Insert a new server test::
 
-Firewall Requirements
-============
-  sudo systemctl status firewalldsu
-  sudo firewall-cmd --state 
-  sudo  firewall-cmd --zone=public --permanent --add-port=5000/tcp
-  sudo firewall-cmd --reload
+    $ curl -i -H "Content-Type: application/json" -X POST -d '{"sistema": "LINUX", "hostname":"LNXSRV-TESTE005", "percentual_memoria":"50%", "percentual_cpu":"45%", "percentual_disco":"20%", "carga":"25%"}' http://10.101.0.7:5000/api/v1/collector/add
 
-Run API !
-============
- $ python test_api_4.py
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
+Request servers again to see what you just added::
+
+    $ curl -i -X GET http://localhost:5000/api/v1/collector/view

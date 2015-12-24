@@ -1,1 +1,3 @@
 http://www.rqlogic.com/entradas/2014/Oct/27/crear-una-api-de-servicios-json-con-flask-docker-y-mysql-1.html
+
+CREATE TABLE `api`.`servermonitor` (`id` INT NOT NULL AUTO_INCREMENT, `sistema` VARCHAR(45) NULL, `hostname` VARCHAR(45) NULL, `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, `carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
