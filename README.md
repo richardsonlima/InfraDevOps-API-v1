@@ -70,3 +70,12 @@ Run API::
     * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
     * Restarting with stat
     * Debugger is active!
+
+
+Insert a new server test::
+
+    $ curl -i -H "Content-Type: application/json" -X POST -d '{"sistema": "LINUX", "hostname":"LNXSRV-TESTE005"}' http://localhost:5000/api/v1/collector/add
+
+Request servers again to see what you just added::
+
+    $ curl -i -X GET http://localhost:5000/api/v1/collector/view
