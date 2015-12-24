@@ -75,6 +75,10 @@ Run API::
 Insert a new server test::
 
     $ curl -i -H "Content-Type: application/json" -X POST -d '{"sistema": "LINUX", "hostname":"LNXSRV-TESTE005", "percentual_memoria":"50%", "percentual_cpu":"45%", "percentual_disco":"20%", "carga":"25%"}' http://10.101.0.7:5000/api/v1/collector/add
+    
+    OR 
+    
+    $python ./agent_pycurl.py
 
 Request servers again to see what you just added::
 
