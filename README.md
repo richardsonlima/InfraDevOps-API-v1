@@ -27,18 +27,28 @@ System Requirements
 - ``Centos Linux 7.1`` 
 - ``Epel repo`` 
 Install Epel repo:
-   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-   sudo rpm -Uvh epel-release-latest-7.noarch.rpm
+.. code-block:: console
 
+   wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   
+   sudo rpm -Uvh epel-release-latest-7.noarch.rpm
+   
 Database Requirements
 ============
 
-  wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-  sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
-  sudo yum update
-  sudo yum install mysql-server
-  sudo systemctl start mysqld
-  sudo mysql_secure_installation
+.. code-block:: console
+
+   wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+   
+   sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+   
+   sudo yum update
+   
+   sudo yum install mysql-server
+   
+   sudo systemctl start mysqld
+   
+   sudo mysql_secure_installation
   
   mysql -u root -p
   CREATE DATABASE api;
