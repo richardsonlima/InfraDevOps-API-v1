@@ -83,3 +83,17 @@ Insert a new server test::
 Request servers again to see what you just added::
 
     $ curl -i -X GET http://localhost:5000/api/v1/collector/view
+    
+Using php to see your database inserts ::
+
+    $ sudo yum install httpd
+    $ sudo systemctl enable httpd.service
+    $ sudo systemctl restart httpd.service
+    $ sudo yum install php php-pear
+    $ sudo yum install php-mysql
+    $ sudo systemctl reload httpd
+    $ sudo  firewall-cmd --zone=public --permanent --add-port=80/tcp
+    $ sudo firewall-cmd --reload
+    $ sudo systemctl reload httpd
+    $ cd /var/www/html && wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/dash.php .
+    
