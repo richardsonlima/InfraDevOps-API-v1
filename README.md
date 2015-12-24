@@ -18,18 +18,19 @@ git clone https://github.com/richardsonlima/InfraDevOps-API-v1.git
 System Requirements:
 ---------------------------
 - ``Centos Linux 7.1`` 
-- ``Epel repo`` 
 
 Install Epel repo:
-````````
+---------------------------
 
     $ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
    
-   sudo rpm -Uvh epel-release-latest-7.noarch.rpm
+    $ sudo rpm -Uvh epel-release-latest-7.noarch.rpm
    
 Database Requirements:
 ---------------------------
 
+Install MySQL Server:
+````````
 
     $ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
    
@@ -42,7 +43,10 @@ Database Requirements:
     $ sudo systemctl start mysqld
    
     $ sudo mysql_secure_installation
-  
+
+Create Database Environment:
+````````    
+
     mysql -u root -p
     
     CREATE DATABASE api;
@@ -62,12 +66,18 @@ Database Requirements:
     CREATE TABLE `api`.`servermonitor` (`id` INT NOT NULL AUTO_INCREMENT, `sistema` VARCHAR(45) NULL, `hostname` VARCHAR(45) NULL, 
   `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, 
   `carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
+
+Create Database Dump:
+````````    
   
    $ mysqldump -u root -p api > apidb_dump_bkp_orig.sql
 
 
 Python Requirements:
 ---------------------------
+
+Install ``pip`` , ``CentOS Development Tools (gcc ...), ``python-devel``, ``mysql-devel``, ``MySQL-python``, ``Flask Micro Framework`` :
+````````    
 
     $ sudo yum -y install python-pip
     $ sudo pip install --upgrade pip
