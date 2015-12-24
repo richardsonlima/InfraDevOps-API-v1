@@ -66,7 +66,8 @@ Firewall Requirements::
     $ sudo firewall-cmd --reload
 
 Run API::
-
+    
+    $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/api.py .
     $ python api.py  
     * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
     * Restarting with stat
