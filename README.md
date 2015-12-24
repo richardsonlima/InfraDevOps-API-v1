@@ -4,7 +4,7 @@ InfraDevOps-API
 
 **InfraDevOPS API ** is a Python API written with Flask Micro Framework to collect servers health data.
 
-Follow Glances on Twitter: `@InfraDevOps`
+Follow me on Twitter: `@InfraDevOps`
 
 Requirements
 ============
