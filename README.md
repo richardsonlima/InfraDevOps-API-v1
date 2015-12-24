@@ -30,8 +30,6 @@ System Requirements:
 Install Epel repo:
 ````````
 
-.. code-block:: console
-
     $ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
    
    sudo rpm -Uvh epel-release-latest-7.noarch.rpm
@@ -39,7 +37,6 @@ Install Epel repo:
 Database Requirements:
 ````````
 
-.. code-block:: console
 
     $ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
    
@@ -68,6 +65,7 @@ Database Requirements:
     FLUSH PRIVILEGES;
   
     use api;
+    
     CREATE TABLE `api`.`servermonitor` (`id` INT NOT NULL AUTO_INCREMENT, `sistema` VARCHAR(45) NULL, `hostname` VARCHAR(45) NULL, 
   `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, 
   `carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
@@ -77,8 +75,6 @@ Database Requirements:
 
 Python Requirements:
 ````````
-
-.. code-block:: console
 
     $ sudo yum -y install python-pip
     $ sudo pip install --upgrade pip
@@ -90,8 +86,6 @@ Python Requirements:
 Firewall Requirements:
 ````````
 
-.. code-block:: console
-
     $ sudo systemctl status firewalldsu
     $ sudo firewall-cmd --state 
     $ sudo  firewall-cmd --zone=public --permanent --add-port=5000/tcp
@@ -99,8 +93,6 @@ Firewall Requirements:
 
 Run API !
 ````````
-
-.. code-block:: console
 
     $ python test_api_4.py
     * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
