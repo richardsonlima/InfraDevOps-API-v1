@@ -29,7 +29,7 @@ Install Epel repo:
 Database Requirements:
 ---------------------------
 
-Install MySQL Server:
+* Install MySQL Server:
 ````````
 
     $ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
@@ -43,8 +43,9 @@ Install MySQL Server:
     $ sudo systemctl start mysqld
    
     $ sudo mysql_secure_installation
+    
 
-Create Database Environment:
+* Create Database Environment:
 ````````    
 
     mysql -u root -p
@@ -67,7 +68,7 @@ Create Database Environment:
   `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, 
   `carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
 
-Create Database Dump:
+* Create Database Dump:
 ````````    
   
    $ mysqldump -u root -p api > apidb_dump_bkp_orig.sql
@@ -76,7 +77,7 @@ Create Database Dump:
 Python Requirements:
 ---------------------------
 
-Install ``pip`` , ``CentOS Development Tools (gcc ...), ``python-devel``, ``mysql-devel``, ``MySQL-python``, ``Flask Micro Framework`` :
+* Install ``pip`` , ``CentOS Development Tools (gcc ...), ``python-devel``, ``mysql-devel``, ``MySQL-python``, ``Flask Micro Framework`` :
 ````````    
 
     $ sudo yum -y install python-pip
