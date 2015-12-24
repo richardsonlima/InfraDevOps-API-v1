@@ -45,14 +45,14 @@ def query_db(query, args=(), one=False):
 def hello():
   return "API !"
 
-@app.route("/api/v1/collector/view", methods=['GET'])
+@app.route("/api/v2/collector/view", methods=['GET'])
 def view():
   result = query_db("SELECT sistema,hostname,percentual_memoria,percentual_cpu,percentual_disco,carga FROM api.servermonitor")
   data = json.dumps(result)
   resp = Response(data, status=200, mimetype='application/json')
   return resp
 
-@app.route("/api/v1/collector/add", methods=['POST'])
+@app.route("/api/v2/collector/add", methods=['POST'])
 def add():
   req_json = request.get_json()
   g.cursor.execute("INSERT INTO api.servermonitor (sistema, hostname, percentual_memoria, percentual_cpu, percentual_disco, carga) VALUES (%s,%s,%s,%s,%s,%s)", (req_json['sistema'], req_json['hostname'], req_json['percentual_memoria'], req_json['percentual_cpu'], req_json['percentual_disco'], req_json['carga']))
