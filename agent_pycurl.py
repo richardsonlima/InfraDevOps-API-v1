@@ -13,9 +13,9 @@ __status__ = "Test"
 
 import pycurl, json
 
-api_url = 'http://localhost:5000/api/v1.0/collector'
+api_url = 'http://10.101.0.7:5000/api/v1/collector/add'
 
-data = json.dumps({"arquitetura": "x64", "hostname": "hostname-test", "sistema": "linux", "done": "True"})
+data = json.dumps({"sistema": "LINUX", "hostname":"LNXSRV-TESTE04566", "percentual_memoria":"50%", "percentual_cpu":"45%", "percentual_disco":"20%", "carga":"25%"})
 
 c = pycurl.Curl()
 c.setopt(pycurl.URL, api_url)
