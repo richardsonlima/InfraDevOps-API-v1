@@ -80,6 +80,7 @@ Insert a new server test::
     
     OR 
     
+    $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_pycurl.py .
     $ python ./agent_pycurl.py
 
 Request servers again to see what you just added::
