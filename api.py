@@ -43,7 +43,7 @@ def query_db(query, args=(), one=False):
 
 @app.route("/")
 def api():
-  return "API !"
+  return "A Python API written with Flask Framework to collect servers health data."
 
 @app.route("/api/v2/collector/view", methods=['GET'])
 def view():
