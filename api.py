@@ -23,16 +23,16 @@ app = Flask(__name__)
 
 @app.before_request
 def db_connect():
-  g.conn = MySQLdb.connect(host='127.0.0.1',
+  g.dbconn = MySQLdb.connect(host='127.0.0.1',
                               user='apiuser',
                               passwd='password',
                               db='api')
-  g.cursor = g.conn.cursor()
+  g.cursor = g.dbconn.cursor()
 
 @app.after_request
 def db_disconnect(response):
   g.cursor.close()
-  g.conn.close()
+  g.dbconn.close()
   return response
 
 def query_db(query, args=(), one=False):
@@ -42,7 +42,7 @@ def query_db(query, args=(), one=False):
   return (rv[0] if rv else None) if one else rv
 
 @app.route("/")
-def hello():
+def api():
   return "API !"
 
 @app.route("/api/v2/collector/view", methods=['GET'])
@@ -56,7 +56,7 @@ def view():
 def add():
   req_json = request.get_json()
   g.cursor.execute("INSERT INTO api.servermonitor (sistema, hostname, percentual_memoria, percentual_cpu, percentual_disco, carga) VALUES (%s,%s,%s,%s,%s,%s)", (req_json['sistema'], req_json['hostname'], req_json['percentual_memoria'], req_json['percentual_cpu'], req_json['percentual_disco'], req_json['carga']))
-  g.conn.commit()
+  g.dbconn.commit()
   resp = Response("Updated", status=201, mimetype='application/json')
   return resp
 
