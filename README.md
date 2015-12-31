@@ -88,6 +88,10 @@ Insert a new server test::
     $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_linux.py .
     $ python ./agent_linux.py
 
+See the result below::
+
+[![asciicast](https://asciinema.org/a/32760.png)](https://asciinema.org/a/32760)    
+
 See the result on database::
 
 [![asciicast](https://asciinema.org/a/32759.png)](https://asciinema.org/a/32759)
