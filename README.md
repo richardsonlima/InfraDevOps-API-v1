@@ -89,7 +89,6 @@ See the result below::
 [![asciicast](https://asciinema.org/a/32760.png)](https://asciinema.org/a/32760)    
 
 Linux Agent Requirements (python version is 2.7) ::
-Supported python version is 2.7, below is the list of packages required to run project:
 
     $ sudo pip install psutil
     $ sudo pip install pycurl
@@ -98,8 +97,7 @@ Linux Agent running::
 
 ![alt tag](https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/agent_linux_4.jpg) 
 
-MacOSx Agent Requirements (python version is 2.7) ::
- 
+MacOSx Agent Requirements (python version is 2.7) :: 
 
     $ sudo pip install psutil
     $ sudo pip install pycurl
@@ -110,7 +108,6 @@ MacOSx Agent running::
 
 
 Windows Agent Requirements (python version is 2.7) ::
-Supported python version is 2.7, below is the list of packages required to run project:
 
     > pip install psutil
     > Install pycurl http://pycurl.sourceforge.net/download/pycurl-7.19.0.2.win32-py2.7.msi
