@@ -92,6 +92,10 @@ Request servers again to see what you just added::
 
     $ curl -i -X GET http://localhost:5000/api/v1/collector/view
     
+Web browser access::
+
+.. image:: https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/screenshot-wide.png       
+    
 Using php to see your database inserts ::
 
     $ sudo yum install httpd
