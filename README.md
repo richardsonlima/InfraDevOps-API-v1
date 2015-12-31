@@ -94,7 +94,7 @@ Request servers again to see what you just added::
     
 Web browser access::
 
-.. image:: https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/web_access_1.jpg         
+![alt tag](https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/web_access_1.jpg)        
     
 Using php to see your database inserts ::
 
