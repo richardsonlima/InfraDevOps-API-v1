@@ -28,22 +28,23 @@ disk_percent_used = disk.percent
 cpu_usage = psutil.cpu_percent()
 get_load = os.getloadavg()[0]
 #ram = psutil.phymem_usage()
-#ram_total = ram.total / 2**20       # MiB.
-#ram_used = ram.used / 2**20
-#ram_free = ram.free / 2**20
-#ram_percent_used = ram.percent
+ram = psutil.virtual_memory() # psutil.phymem_usage() is deprecated
+ram_total = ram.total / 2**20       # MiB.
+ram_used = ram.used / 2**20
+ram_free = ram.free / 2**20
+ram_percent_used = ram.percent
 
 process = psutil.Process(os.getpid())
 print "[+] Platform: ",platform.system()
 print "[+] Hostname: ",socket.gethostname()
-#print "[+] Memory percent used: ",ram_percent_used
+print "[+] Memory percent used: ",ram_percent_used
 print "[+] CPU percent used: ",cpu_usage
 print "[+] Disk percent used: ",disk_percent_used
 print "[+] Load: ",get_load
 
 api_url = 'http://api.domain:5000/api/v1/collector/add'
 
-data = json.dumps({"sistema": platform.system(), "hostname": socket.gethostname(), "percentual_memoria":"ram_percent_used", "percentual_cpu": cpu_usage, "percentual_disco": disk_percent_used, "carga": get_load })
+data = json.dumps({"sistema": platform.system(), "hostname": socket.gethostname(), "percentual_memoria": ram_percent_used, "percentual_cpu": cpu_usage, "percentual_disco": disk_percent_used, "carga": get_load })
 
 c = pycurl.Curl()
 c.setopt(pycurl.URL, api_url)
