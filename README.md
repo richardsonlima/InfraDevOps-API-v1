@@ -117,6 +117,6 @@ Using php to see your database inserts ::
     $ sudo systemctl reload httpd
     $ cd /var/www/html && wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/dash.php .
     
-![alt tag](https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/web_access_2.jpg) 
+![alt tag](https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/web_access_3.jpg) 
 
     
