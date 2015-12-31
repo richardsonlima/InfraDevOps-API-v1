@@ -39,7 +39,7 @@ print "[+] Hostname: ",socket.gethostname()
 #print "[+] Memory percent used: ",ram_percent_used
 print "[+] CPU percent used: ",cpu_usage
 print "[+] Disk percent used: ",disk_percent_used
-print "[+] Load: ",os.getloadavg()[0]
+print "[+] Load: ",get_load
 
 api_url = 'http://api.domain:5000/api/v1/collector/add'
 
