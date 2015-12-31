@@ -88,6 +88,10 @@ Insert a new server test::
     $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_pycurl.py .
     $ python ./agent_pycurl.py
 
+See the result on database::
+
+[![asciicast](https://asciinema.org/a/32759.png)](https://asciinema.org/a/32759)
+
 Request servers again to see what you just added::
 
     $ curl -i -X GET http://localhost:5000/api/v1/collector/view
