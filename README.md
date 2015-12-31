@@ -74,6 +74,10 @@ Run API::
     * Restarting with stat
     * Debugger is active!
 
+Terminal session test::
+
+[![asciicast](https://asciinema.org/a/32755.png)](https://asciinema.org/a/32755?autoplay=1)
+
 
 Insert a new server test::
 
