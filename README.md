@@ -76,7 +76,7 @@ Run API::
 
 Terminal session test::
 
-[![asciicast](https://asciinema.org/a/32755.png)](https://asciinema.org/a/32755?autoplay=1)
+[![asciicast](https://asciinema.org/a/32758.png)](https://asciinema.org/a/32758?autoplay=1)
 
 
 Insert a new server test::
