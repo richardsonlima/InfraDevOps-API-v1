@@ -40,7 +40,7 @@ print "[+] CPU percent used: ",cpu_usage
 print "[+] Disk percent used: ",disk_percent_used
 print "[+] Load: ",os.getloadavg()[0]
 
-api_url = 'http://10.101.0.10:5000/api/v2/collector/add'
+api_url = 'http://10.101.0.10:5000/api/v1/collector/add'
 
 data = json.dumps({"sistema": platform.system(), "hostname": socket.gethostname(), "percentual_memoria":"ram_percent_used", "percentual_cpu": cpu_usage, "percentual_disco": disk_percent_used, "carga": os.getloadavg()[0] })
 
