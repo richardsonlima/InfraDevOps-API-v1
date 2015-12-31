@@ -95,6 +95,7 @@ Supported python version is 2.7, below is the list of packages required to run p
     $ sudo pip install pycurl
     
 Linux Agent running::
+
 ![alt tag](https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/agent_linux_4.jpg) 
 
 MacOSx Agent Requirements::
@@ -104,6 +105,7 @@ Supported python version is 2.7, below is the list of packages required to run p
     $ sudo pip install pycurl
     
 MacOSx Agent running::
+
 ![alt tag](https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/agent_macosx_4.jpg) 
 
 
@@ -114,6 +116,7 @@ Supported python version is 2.7, below is the list of packages required to run p
     > Install pycurl http://pycurl.sourceforge.net/download/pycurl-7.19.0.2.win32-py2.7.msi
 
 Windows Agent running::
+
 ![alt tag](https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/agent_win_4.jpg) 
 
 See the result on database::
