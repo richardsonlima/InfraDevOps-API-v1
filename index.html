@@ -19,14 +19,15 @@
     </section>
 
     <section class="main-content">
-      <h1></h1>
+      <p>===============================</p>
 
 <h1>
 <a id="infradevops-api-test" class="anchor" href="#infradevops-api-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>InfraDevOps-API (Test)</h1>
 
 <p>*<em>InfraDevOPS API *</em> is a Python API written with Flask Micro Framework to collect servers health data.</p>
 
-<p>Follow me on Twitter: <code>@InfraDevOps</code></p>
+<p>Follow me on Twitter: <code>@InfraDevOps</code>
+Project Web Site: <a href="http://richardsonlima.github.io/InfraDevOps-API-v1">http://richardsonlima.github.io/InfraDevOps-API-v1</a></p>
 
 <h3>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
@@ -113,14 +114,18 @@ $ python api.py
 
 OR 
 
-$ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_pycurl.py .
-$ python ./agent_pycurl.py
+$ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_linux.py .
+$ python ./agent_linux.py
 </code></pre>
 
 <p>Request servers again to see what you just added::</p>
 
 <pre><code>$ curl -i -X GET http://localhost:5000/api/v1/collector/view
 </code></pre>
+
+<p>Web browser access::</p>
+
+<p><img src="https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/docs/images/web_access_1.jpg" alt="alt tag">        </p>
 
 <p>Using php to see your database inserts ::</p>
 
