@@ -85,8 +85,8 @@ Insert a new server test::
     
     OR 
     
-    $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_pycurl.py .
-    $ python ./agent_pycurl.py
+    $ wget https://raw.githubusercontent.com/richardsonlima/InfraDevOps-API-v1/master/agent_linux.py .
+    $ python ./agent_linux.py
 
 See the result on database::
 
