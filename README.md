@@ -94,7 +94,7 @@ See the result below::
 
 See the result on database::
 
-[![asciicast](https://asciinema.org/a/32759.png)](https://asciinema.org/a/32759)
+[![asciicast](https://asciinema.org/a/32762.png)](https://asciinema.org/a/32762)
 
 Request servers again to see what you just added::
 
