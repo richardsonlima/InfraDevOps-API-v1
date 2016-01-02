@@ -1,5 +1,81 @@
 http://www.rqlogic.com/entradas/2014/Oct/27/crear-una-api-de-servicios-json-con-flask-docker-y-mysql-1.html
 
-CREATE TABLE `api`.`servermonitor` (`id` INT NOT NULL AUTO_INCREMENT, `sistema` VARCHAR(45) NULL, `hostname` VARCHAR(45) NULL, `percentual_memoria` VARCHAR(45) NULL, `percentual_cpu` VARCHAR(45) NULL, `percentual_disco` VARCHAR(45) NULL, `carga` VARCHAR(45) NULL, PRIMARY KEY (`id`));
-
 $ curl -i -H "Content-Type: application/json" -X POST -d '{"sistema": "LINUX", "hostname":"LNXSRV-TESTE005", "percentual_memoria":"50%", "percentual_cpu":"45%", "percentual_disco":"20%", "carga":"25%"}' http://10.101.0.7:5000/api/v1/collector/add
+
+----------- NEW DB
+
+CREATE DATABASE ApiItemDb;
+CREATE TABLE `ApiItemDb`.`tblServers` (
+`IdServidor` INT NOT NULL AUTO_INCREMENT,
+`Sistema` varchar(45) DEFAULT NULL,
+`Hostname` varchar(45) DEFAULT NULL,
+`PercentualMemoria` varchar(45) DEFAULT NULL,
+`PercentualCpu` varchar(45) DEFAULT NULL,
+`PercentualDisco` varchar(45) DEFAULT NULL,
+`Carga` varchar(45) DEFAULT NULL,
+PRIMARY KEY (`IdServidor`));
+
+GRANT ALL PRIVILEGES ON ApiItemDb.* TO 'apiuser'@'localhost';
+GRANT ALL PRIVILEGES ON ApiItemDb.* TO 'apiuser'@'%';
+FLUSH PRIVILEGES;
+
+USE `ApiItemDb`;
+
+DROP procedure IF EXISTS `StoredProcedureCreateServer`;
+
+DELIMITER $$
+USE `ApiItemDb`$$
+CREATE PROCEDURE `StoredProcedureCreateServer` (
+
+IN p_Hostname varchar(50),
+IN p_Sistema varchar(50),
+IN p_PercentualMemoria varchar(50),
+IN p_PercentualCpu varchar(50),
+IN p_PercentualDisco varchar(50),
+IN p_Carga varchar(50)
+
+)
+BEGIN
+if ( select exists (select 1 from tblServers where Hostname = p_Hostname) ) THEN
+     insert into tblServers
+     (
+         Sistema,
+         PercentualMemoria,
+         PercentualCpu,
+         PercentualDisco,
+         Carga
+     )
+     values
+     (
+         p_Sistema,
+         p_PercentualMemoria,
+         p_PercentualCpu,
+         p_PercentualDisco,
+         p_Carga
+     );
+
+ELSE
+    insert into tblServers
+    (
+        Hostname,
+        Sistema,
+        PercentualMemoria,
+        PercentualCpu,
+        PercentualDisco,
+        Carga
+    )
+values
+    (
+        p_Hostname,
+        p_Sistema,
+        p_PercentualMemoria,
+        p_PercentualCpu,
+        p_PercentualDisco,
+        p_Carga
+     );
+
+END IF;
+
+END$$
+
+DELIMITER ;
