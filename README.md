@@ -46,13 +46,75 @@ Database environment::
 Create Database::
 
     $ mysql -u root -p
-    CREATE DATABASE api;
-    CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'password';
-    CREATE USER 'apiuser'@'%' IDENTIFIED BY 'password';
-    GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'localhost';
-    GRANT ALL PRIVILEGES ON api.* TO 'apiuser'@'%';
-    FLUSH PRIVILEGES;
-    use api;
+CREATE DATABASE ApiItemDb;
+CREATE TABLE `ApiItemDb`.`tblServers` (
+`IdServidor` INT NOT NULL AUTO_INCREMENT,
+`Sistema` varchar(45) DEFAULT NULL,
+`Hostname` varchar(45) DEFAULT NULL,
+`PercentualMemoria` varchar(45) DEFAULT NULL,
+`PercentualCpu` varchar(45) DEFAULT NULL,
+`PercentualDisco` varchar(45) DEFAULT NULL,
+`Carga` varchar(45) DEFAULT NULL,
+PRIMARY KEY (`IdServidor`));  
+CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'apiuser'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON ApiItemDb.* TO 'apiuser'@'localhost';
+GRANT ALL PRIVILEGES ON ApiItemDb.* TO 'apiuser'@'%';
+FLUSH PRIVILEGES;
+USE `ApiItemDb`;
+DROP procedure IF EXISTS `StoredProcedureCreateServer`;
+DELIMITER $$
+USE `ApiItemDb`$$
+CREATE PROCEDURE `StoredProcedureCreateServer` (  
+IN p_Hostname varchar(50),
+IN p_Sistema varchar(50),
+IN p_PercentualMemoria varchar(50),
+IN p_PercentualCpu varchar(50),
+IN p_PercentualDisco varchar(50),
+IN p_Carga varchar(50)
+)
+BEGIN
+if ( select exists (select 1 from tblServers where Hostname = p_Hostname) ) THEN
+     insert into tblServers
+       (
+           Sistema,
+           PercentualMemoria,
+           PercentualCpu,
+           PercentualDisco,
+           Carga
+       )
+       values
+       (
+           p_Sistema,
+           p_PercentualMemoria,
+           p_PercentualCpu,
+           p_PercentualDisco,
+           p_Carga
+       );
+
+  ELSE
+      insert into tblServers
+       (
+           Hostname,
+           Sistema,
+           PercentualMemoria,
+           PercentualCpu,
+           PercentualDisco,
+           Carga
+       )
+  values
+       (
+           p_Hostname,
+           p_Sistema,
+           p_PercentualMemoria,
+           p_PercentualCpu,
+           p_PercentualDisco,
+           p_Carga
+        );
+
+END IF;
+END$$
+DELIMITER ;
 
 Import Database Dump::
 

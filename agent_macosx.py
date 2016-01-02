@@ -42,9 +42,9 @@ print "[+] CPU percent used: ",cpu_usage
 print "[+] Disk percent used: ",disk_percent_used
 print "[+] Load: ",get_load
 
-api_url = 'http://api.domain:5000/api/v1/collector/add'
+api_url = 'http://10.101.0.14:5000/api/v1/collector/add'
 
-data = json.dumps({"sistema": platform.system(), "hostname": socket.gethostname(), "percentual_memoria": ram_percent_used, "percentual_cpu": cpu_usage, "percentual_disco": disk_percent_used, "carga": get_load })
+data = json.dumps({"Sistema": platform.system(), "Hostname": socket.gethostname(), "PercentualMemoria": ram_percent_used, "PercentualCpu": cpu_usage, "PercentualDisco": disk_percent_used, "Carga": get_load })
 
 c = pycurl.Curl()
 c.setopt(pycurl.URL, api_url)

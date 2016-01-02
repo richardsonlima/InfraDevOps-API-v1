@@ -26,7 +26,7 @@ def db_connect():
   g.dbconn = MySQLdb.connect(host='127.0.0.1',
                               user='apiuser',
                               passwd='password',
-                              db='api')
+                              db='ApiItemDb')
   g.cursor = g.dbconn.cursor()
 
 @app.after_request
@@ -47,7 +47,7 @@ def api():
 
 @app.route("/api/v1/collector/view", methods=['GET'])
 def view():
-  result = query_db("SELECT sistema,hostname,percentual_memoria,percentual_cpu,percentual_disco,carga FROM api.servermonitor")
+  result = query_db("SELECT Sistema,Hostname,PercentualMemoria,PercentualCpu,PercentualDisco,Carga FROM ApiItemDb.tblServers")
   data = json.dumps(result)
   resp = Response(data, status=200, mimetype='application/json')
   return resp
@@ -55,7 +55,7 @@ def view():
 @app.route("/api/v1/collector/add", methods=['POST'])
 def add():
   req_json = request.get_json()
-  g.cursor.execute("INSERT INTO api.servermonitor (sistema, hostname, percentual_memoria, percentual_cpu, percentual_disco, carga) VALUES (%s,%s,%s,%s,%s,%s)", (req_json['sistema'], req_json['hostname'], req_json['percentual_memoria'], req_json['percentual_cpu'], req_json['percentual_disco'], req_json['carga']))
+  g.cursor.execute("INSERT INTO ApiItemDb.tblServers (Sistema, Hostname, PercentualMemoria, PercentualCpu, PercentualDisco, Carga) VALUES (%s,%s,%s,%s,%s,%s)", (req_json['Sistema'], req_json['Hostname'], req_json['PercentualMemoria'], req_json['PercentualCpu'], req_json['PercentualDisco'], req_json['Carga']))
   g.dbconn.commit()
   resp = Response("Updated", status=201, mimetype='application/json')
   return resp
