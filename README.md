@@ -147,7 +147,7 @@ Insert a new server test::
 
 See the result below::
 
-[![asciicast](https://asciinema.org/a/32760.png)](https://asciinema.org/a/32760)    
+[![asciicast](https://asciinema.org/a/195341.png)](https://asciinema.org/a/195341)
 
 Linux Agent Requirements (python version is 2.7) ::
 
