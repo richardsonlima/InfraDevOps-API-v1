@@ -135,9 +135,8 @@ Run API::
     * Restarting with stat
     * Debugger is active!
 
-Terminal session test::
-
-[![asciicast](https://asciinema.org/a/32758.png)](https://asciinema.org/a/32758?autoplay=1)
+Terminal tests::
+[![asciicast](https://asciinema.org/a/32758.png)](https://asciinema.org/a/32758?autoplay=1) 
 
 
 Insert a new server test::
